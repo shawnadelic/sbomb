@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ article.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <h2>{{ article.title }}</h2>
+  <p>Written by <a href='{% url 'profiles:profile_view' article.author.id %}'>{{ article.author.first_name }}</a></p>
+  <p>Published {{ article.pub_date|date:"F d, Y" }}</p>
+  <p>{{ article.body|safe }}</p>
+{% endblock %}

@@ -1,0 +1,112 @@
+@import "variables.scss";
+
+$nav-font-size: $base-font-size * 1.1;
+$nav-font: $nav-font-size * 1.25 $base-header-font;
+$nav-padding: 6px;
+$nav-item-width: 1%;
+
+// Slicknav
+
+nav {
+  display: none;
+}
+
+.slicknav_menu {
+  display: block;
+}
+
+@media (min-width: $tablet-width){
+  nav {
+    display: block;
+  }
+  .slicknav_menu {
+    display: none;
+  }
+}
+
+// List Styles
+
+@if variable-exists(nav-items){
+  $nav-item-width: 100%/$nav-items
+}
+
+@mixin ul-clear(){
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin li-clear(){
+  padding: 0;
+}
+
+@media (min-width: $tablet-width){
+  nav {
+    font: $nav-font;
+    position: relative;
+    ul {
+      @include ul-clear();
+      display: table;
+      width: 100%;
+      ul {
+        display: none;
+        li {
+        }
+      }
+    }
+    li {
+      @include li-clear();
+      position: relative;
+      display: table-cell;
+      width: $nav-item-width;
+      text-align: center;
+      &:hover > ul {
+        z-index: 5;
+        position: absolute;
+        top: 100%;
+        // Dropdown Submenus
+        display: block;
+
+        // Table-Cell Submenus
+        //display: table;
+        //width: 100%;
+        //left: 0;
+        li {
+          // Dropdown Submenus 
+          display: block;
+          width: 100%;
+
+          // Table-Cell Submenus
+          //display: table-cell; 
+          //width: 1%;
+
+        }
+      }
+    }
+    a {
+      color: $nav-link-color;
+      display: block;
+      width: 100%;
+      background: $nav-background; 
+      padding: $base-padding/2 $base-padding;
+      text-decoration: none;
+      text-shadow: 0 0 15px rgba(10, 10, 10, 0.35);
+      box-shadow: 3px 3px 0 #8C8979;
+      &:hover {
+        color: $nav-link-hover-color;
+        background: $nav-background-hover;
+        text-shadow: 3px 3px 4px rgba(50, 50, 50, 0.25);
+      }
+    }
+    li + li {
+      padding-left: $nav-padding;
+    }
+    ul li:first-child ul li {
+      padding: 0;
+    }
+    ul li + li ul li {
+      padding-left: 0;
+      padding-right: $nav-padding;
+    }
+  }
+}

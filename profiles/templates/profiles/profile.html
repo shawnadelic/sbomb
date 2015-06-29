@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block content %}
+  <h2>{{ user_profile.user.first_name }}</h2>
+  <p>{{ user_profile.bio|safe }}</p>
+  <p><a href="{{ user_profile.website }}">{{ user_profile.website }}</a><br>
+  {% thumbnail user_profile.photo "300x300" crop="top" as photo %}
+    <a href="{{ photo.url }}"><img src="{{ photo.url }}"></a>
+  {% endthumbnail %}
+{% endblock %}

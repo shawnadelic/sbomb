@@ -1,0 +1,116 @@
+// Site-wide variables
+
+@import "partials/variables.scss";
+@import "partials/normalize.scss";
+
+// Local variables
+
+$body-font: $base-font;
+$header-font-size: $base-font-size;
+$header-font: $base-header-font;
+$header-font-df: 0.1rem;
+
+// Box Sizing Default
+
+* {
+  box-sizing: border-box;
+}
+
+// Container
+
+@media (min-width: $tablet-width){
+  .container {
+    position: relative;
+    width: $tablet-container-width;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: $desktop-width){
+  .container.row {
+    width: $desktop-container-width;
+  }
+}
+
+// Grid Structure
+
+$gutter-width: 1%;
+$column-map: (
+  1: "one",
+  2: "two",
+  3: "three",
+  4: "four",
+  5: "five",
+  6: "six",
+  7: "seven",
+  8: "eight",
+  9: "nine",
+  10: "ten",
+  11: "eleven",
+  12: "twelve"
+);
+
+@media (min-width: $tablet-width) {
+  @each $digit, $number in $column-map {
+    .#{$number}-cell.column {
+      width: (100% - ( $gutter-width * (12/$digit - 1)))*($digit/12);
+    }
+    .#{$number}-cell-offset.column {
+      margin-left: (100% - ( $gutter-width * (12/$digit - 1)))*($digit/12) + $gutter-width;
+    }
+  }
+  .column {
+    & + & {
+      margin-left: $gutter-width;
+    }
+    float: left;
+    box-sizing: border-box;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.empty-cell:after {
+  content: ".";
+  visibility: hidden;
+}
+
+.row + .row {
+  margin-top: $base-padding;
+}
+
+// Custom styles
+
+body {
+  font-size: $body-font-size;
+  font-family: $body-font;
+  background: $body-background;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+  font-weight: normal;
+}
+@for $i from 1 through 6 {
+  h#{$i} {
+    margin-bottom: $header-font-size - $header-font-df * 2 * ($i - 1);
+    font-size: $header-font-size * 1.75 - $header-font-df * ($i - 1);
+    margin-bottom: $header-font-size - $header-font-df * 2 * ($i - 1);
+  }
+}
+
+p {
+  margin: 0;
+}
+
+p + p {
+  margin: $header-font-size*0.5 0 0;
+}
+
+@import "partials/horizontal-nav.scss";
+@import "partials/slicknav.scss";
+@import "partials/main.scss";
+@import "partials/debug.scss";

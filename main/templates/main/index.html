@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block before_content %}
+  <ul class="bx-slider" style="visibility:hidden;">
+  {% for article in featured_articles %}
+    {% thumbnail article.image "1400x400" crop="center" as image %}
+    <li><a href='{{ article.get_absolute_url }}'><img src='{{ image.url }}' title='{{ article.title }}'></a></li>
+    {% endthumbnail %}
+  {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  $(function() {
+    var indexSlider = $('.bx-slider').bxSlider({
+      captions: true,
+      auto: true,
+      pause: 5000,
+      speed: 1000,
+      usingCSS: false,
+      autostart: true,
+      pager: false,
+      onSliderLoad: function(){
+        $(".bx-slider").css("visibility", "visible");
+      }
+    });
+    // Initialize keyboard listener
+    $(document).keydown(function(e){
+        if ($('.bx-slider').length) {
+            if (e.keyCode == 39 && !e.altKey) // Right arrow 
+            {
+                indexSlider.stopAuto();
+                indexSlider.goToNextSlide();
+                indexSlider.startAuto();
+            }
+            
+            else if (e.keyCode == 37 && !e.altKey) // left arrow
+            {
+                indexSlider.stopAuto();
+                indexSlider.goToPrevSlide();
+                indexSlider.startAuto();
+            }
+        };
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% load thumbnail %}
+  <div class="article-preview">
+    {% thumbnail article.image "400x400" crop="center" as photo %}
+    <a href='{% url 'articles:article_view' article.slug %}'><img src='{{ photo.url }}'></a>
+    <div class="caption">
+      <span class="title"><a href='{% url 'articles:article_view' article.slug %}'>{{ article.title }}</a></span>
+      <span class="info">Written by {{ article.author.first_name }} on {{ article.pub_date|date:"F d, Y" }}</span></div>
+    {% endthumbnail %}
+  </div>

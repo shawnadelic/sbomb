@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <title>{% block title %}Sugarbomb DIY{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="description" content="A website for music">
+    <meta name="author" content ="">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    {% block extra_meta_tags %}{% endblock %}
+
+    <link rel="stylesheet" href="{% static 'assets/styles/kono.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Changa+One' rel='stylesheet' type='text/css'>
+    {% block extra_styles %}{% endblock %}
+  </head>
+  <body>
+    <div class="header-stripe"></div>
+    <div class="main">
+      <div class="site-title container row"><h1>Sugarbomb DIY</h1></div>
+      <div class="container row">
+        <nav>
+          <ul>
+            <div>
+              <li><a href="{% url 'index' %}">Home</a></li>
+            </div>
+            <div>
+              <li><a href="{% url 'articles:all_articles' %}">Articles</a>
+                <ul>
+                  <li><a href="{% url 'articles:category' 'music-articles' %}">Music Articles</a></li>
+                  <li><a href="{% url 'articles:category' 'album-reviews' %}">Album Reviews</a></li>
+                </ul>
+              </li>
+            </div>
+            <div>
+              <li><a href="{% url 'bands:index' %}">Bands</a></li>
+            </div>
+            <div>
+              <li><a href="/">Submit</a></li>
+            </div>
+            <div>
+              <li><a href="{% url 'about_us' %}">About Us</a></li>
+            </div>
+          </ul>
+        </nav>
+        {% block before_content %}{% endblock %}
+        <div class="content">
+        {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+    <div class="footer container row">
+      <div class="six-cell column">Content</div>
+      <div class="six-cell column social-media">
+      <a href="http://www.facebook.com/"><img src="{% static 'assets/images/social-facebook.png' %}" style="width:60px"></a>
+      <a href="http://www.twitter.com/"><img src="{% static 'assets/images/social-twitter.png' %}" style="width:60px"></a>
+      <a href="http://www.instagram.com/"><img src="{% static 'assets/images/social-instagram.png' %}" style="width:60px"></a>
+      <a href="http://www.youtube.com/"><img src="{% static 'assets/images/social-youtube.png' %}" style="width:60px"></a>
+    </div>
+    <script src="{% static 'assets/scripts/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/scripts/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'assets/scripts/jquery.bxslider.js' %}"></script>
+{% block extra_scripts %}{% endblock %}
+    <script>
+      $(function(){
+          $('nav > ul').slicknav();
+          });
+    </script>
+  </body>
+</html>

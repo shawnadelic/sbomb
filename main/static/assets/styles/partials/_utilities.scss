@@ -1,0 +1,25 @@
+@mixin vender-mixin($attribute,$value){
+  -webkit-#{$attribute}: $value;
+  -moz-#{$attribute}: $value;
+  #{$attribute}: $value;
+}
+@mixin border-radius($value){
+  @include vender-mixin("border-radius",$value);
+}
+
+@mixin box-shadow($value){
+  @include vender-mixin("box-shadow",$value);
+}
+
+@mixin text-shadow($value){
+  @include vender-mixin("text-shadow",$value);
+}
+@mixin heavy-box-shadow(){
+  @include box-shadow(3px 3px 0 #8C8979);
+}
+@mixin light-box-shadow(){
+  @include box-shadow(0 0 15px rgba(10,10,10, 0.35));
+}
+@mixin light-text-shadow(){
+  @include text-shadow(0 0 15px rgba(10,10,10, 0.35));
+}

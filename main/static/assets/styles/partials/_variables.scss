@@ -1,0 +1,38 @@
+// Media-specific variables
+$tablet-width: 568px;
+$tablet-container-width: 95%;
+$desktop-width: 768px;
+$desktop-container-width: 85%;
+
+// Colors
+$beige: #fefceb;
+$dark-grey: #222;
+
+// Images
+$beige-bg-img: url('../images/beige-bg.png');
+$dark-grey-bg-img: url('../images/dark-grey-bg.png');
+
+// Base variables
+$base-padding: 1rem;
+$base-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+$base-border-radius: 4px;
+$base-text-color: $dark-grey;
+$base-hover-color: #666;
+$base-background: #222;
+$base-font: "Source Sans Pro", Arial, sans-serif;
+$base-font-size: 1rem;
+$base-header-font: "Changa One", Arial, sans-serif;
+
+// Body variables
+$body-background: $dark-grey $dark-grey-bg-img;
+$body-font-size: 1.1rem;
+
+// Navigation variables
+//$nav-items: 5;
+$nav-link-color: $beige;
+$nav-link-hover-color: #262526;
+$nav-background: #fe2d72 url('../images/pink-bg.png');
+$nav-background-hover: #579903 url('../images/green-pattern.jpg');
+$nav-background-secondary: $nav-background;
+$nav-background-hover-secondary: #162e6c url('../images/blue-pattern.jpg');
+$nav-button-hover-background: $nav-background-hover;

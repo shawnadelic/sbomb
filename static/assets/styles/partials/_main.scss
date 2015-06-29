@@ -1,0 +1,62 @@
+$header-stripe-height: 160px;
+$header-stripe-gutter: 86px;
+
+.main {
+  background: $beige $beige-bg-img;
+  padding-bottom: 2%;
+}
+.footer {
+  color: $beige;
+  padding: 0.8rem;
+}
+
+.site-title {
+  color: $beige;
+  padding: 0;
+  h1 {
+    margin-top: 1rem;
+  }
+  line-height: 1.5rem;
+  padding-left: 0.8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+// Navigation spacing
+
+.content {
+  padding: 0.001rem 0.8rem 0.8rem;
+}
+
+
+@media (min-width: $tablet-width){
+  .content {
+    padding: 0;
+    margin-top: $base-padding*1.5;
+  }
+  .header-stripe {
+    background: $body-background;
+    position: absolute;
+    width: 100%;
+    height: $header-stripe-height;
+  }
+  .site-title {
+    position: relative;
+    display: block;
+    padding: 0;
+    padding-top: $header-stripe-height - $header-stripe-gutter;
+    h1 {
+      font-size: 2.2rem;
+      color: $beige;
+      letter-spacing: -0.1rem;
+      margin: 0;
+    }
+  }
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: $base-padding * 5;
+  }
+
+}

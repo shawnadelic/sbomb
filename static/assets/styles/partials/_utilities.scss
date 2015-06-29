@@ -1,0 +1,17 @@
+@mixin vender-mixin($attribute,$value){
+  -webkit-#{$attribute}: $value;
+  -moz-#{$attribute}: $value;
+  #{$attribute}: $value;
+}
+@mixin border-radius($value){
+  @include vender-mixin("border-radius",$value);
+}
+
+@mixin box-shadow($value){
+  @include vender-mixin("box-shadow",$value);
+}
+
+@mixin text-shadow($value){
+  @include vender-mixin("text-shadow",$value);
+}
+

@@ -1,0 +1,104 @@
+@import "variables.scss";
+@import "utilities.scss";
+
+$nav-font-size: $base-font-size * 1.1;
+$nav-font: $nav-font-size * 1.25 $base-header-font;
+$nav-padding: 6px;
+$nav-item-width: 1%;
+
+// Slicknav
+
+nav {
+  display: none;
+}
+
+.slicknav_menu {
+  display: block;
+}
+
+@media (min-width: $tablet-width){
+  nav {
+    display: block;
+  }
+  .slicknav_menu {
+    display: none;
+  }
+}
+
+// List Styles
+
+@if variable-exists(nav-items){
+  $nav-item-width: 100%/$nav-items
+}
+
+@mixin ul-clear(){
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin li-clear(){
+  padding: 0;
+}
+
+@media (min-width: $tablet-width){
+  nav {
+    font: $nav-font;
+    position: relative;
+    ul {
+      @include ul-clear();
+      display: table;
+      div {
+        width: $nav-item-width;
+        display: table-cell;
+      }
+      width: 100%;
+      ul {
+        display: none;
+        a:hover {
+          background: $nav-background-hover-secondary;
+        }
+      }
+      div + div {
+        padding-left: $nav-padding;
+      }
+    }
+    li {
+      @include li-clear();
+      position: relative;
+      text-align: center;
+      &:hover > ul {
+        z-index: 5;
+        position: absolute;
+        top: 100%;
+        display: block;
+        li {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+    a {
+      color: $nav-link-color;
+      display: block;
+      width: 100%;
+      background: $nav-background; 
+      padding: $base-padding/2 $base-padding;
+      text-decoration: none;
+      @include light-text-shadow();
+      @include heavy-box-shadow();
+      &:hover {
+        color: $nav-link-hover-color;
+        background: $nav-background-hover;
+        text-shadow: 3px 3px 4px rgba(50, 50, 50, 0.25);
+      }
+    }
+    ul li:first-child ul li {
+      padding: 0;
+    }
+    ul li + li ul li {
+      padding-left: 0;
+      padding-right: $nav-padding;
+    }
+  }
+}
