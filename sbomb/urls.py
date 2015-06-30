@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^articles/', include('articles.urls', namespace='articles')),
     url(r'^profiles/', include('profiles.urls', namespace='profiles')),
     url(r'^bands/', include('bands.urls', namespace='bands')),
+    url(r'^feedback/', include('feedback.urls', namespace='feedback')),
 ] + static.static( settings.MEDIA_URL, document_root=settings.MEDIA_ROOT )

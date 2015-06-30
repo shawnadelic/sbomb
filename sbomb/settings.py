@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-#    'suit',
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'profiles',
     'sorl.thumbnail',
     'bands',
+    'feedback',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,9 +122,10 @@ CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.j
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Full',
+        'toolbar': None,
         'width': '100%',
-        'extraPlugins': 'youtube',
+#        'extraPlugins': 'youtube',
+        'extraPlugins': 'oembed,widget,lineutils',
     },
 }
 

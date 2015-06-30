@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 
-{% block before_content %}
+{% block content %}
   <ul class="bx-slider" style="visibility:hidden;">
   {% for article in featured_articles %}
     {% thumbnail article.image "1400x400" crop="center" as image %}
@@ -9,6 +9,24 @@
     {% endthumbnail %}
   {% endfor %}
   </ul>
+    <div class="row">
+      <div class="four-cell column">
+        <div class="row">
+          <h2>Recent Articles</h2>
+          {% for article in recent_articles %}
+          {% include 'articles/article_preview.html' %}
+        </div><div class="row">
+          {% endfor %}
+          <a href="{% url 'articles:all_articles' %}">See more articles...</a>
+        </div>
+      </div>
+      <div class="four-cell column">
+        <h2>Instagram</h2>
+      </div>
+      <div class="four-cell column">
+        <h2>Twitter</h2>
+      </div>
+    </div>
 {% endblock %}
 
 {% block extra_scripts %}

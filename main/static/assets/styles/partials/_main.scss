@@ -1,4 +1,4 @@
-$header-stripe-height: 160px;
+$header-stripe-height: 150px;
 $header-stripe-gutter: 86px;
 
 // General Styles
@@ -36,11 +36,34 @@ a:hover{
 // Articles
 
 .article-preview{
+  margin-top: $base-padding;
+  max-width: 400px;
+  position: relative;
+  @media (min-width: $tablet-width){
+    margin-top: 0;
+  }
   img {
     max-width: 100%;
     display: block;
   }
+  &:hover {
+    @include light-box-shadow();
+  }
+}
+.article-content{
+  margin-top: $base-padding;
+}
+
+.article-body {
+  padding: 0;
+}
+
+.article-header{
   position: relative;
+  img {
+    max-width: 100%;
+    display: block;
+  }
 }
 
 // Navigation spacing
@@ -53,7 +76,7 @@ a:hover{
 @media (min-width: $tablet-width){
   .content {
     padding: 0;
-    margin-top: $base-padding*1.5;
+    margin-top: $base-padding*1.25;
   }
   .header-stripe {
     background: $body-background;
@@ -108,6 +131,7 @@ a:hover{
       font-size: $base-font-size*1.2;
     }
     &.header {
+      margin-bottom: $base-font-size*0.25;
       @media (min-width: $tablet-width) {
         font-size: $base-font-size*1.4;
       }
@@ -119,11 +143,12 @@ a:hover{
   .info {
     text-transform: uppercase;
     display: block;
+    font-size: $base-font-size*0.9;
     @media (min-width: $tablet-width) {
       font-size: $base-font-size*0.8;
     }
     @media (min-width: $desktop-width) {
-      font-size: $base-font-size*0.9;
+      font-size: $base-font-size*0.8;
       }
     &.header {
       @media (min-width: $tablet-width) {
@@ -140,4 +165,80 @@ a:hover{
 
 .social-media {
   text-align: right;
+}
+
+// Profile Styling
+.profile-image {
+  float: right;
+  max-width: 100%;
+  @include border-radius(50%);
+}
+
+// Alert Styles
+
+.alert {
+  max-width: 50%;
+  margin: 0 auto;
+  padding: $base-padding/2 $base-padding;
+  @include light-box-shadow();
+  &.success {
+    background-color: #090;
+  }
+  &.info {
+    background-color: #06f;
+  }
+  &.warning {
+    background-color: #fc0;
+  }
+  &.error {
+    background-color: #fc0;
+  }
+}
+
+// General Form Styles
+input, textarea, button {
+  @include light-box-inset-shadow();
+  color: $dark-grey;
+  padding: $base-padding*0.1 $base-padding*0.25;
+  font-size: $base-font-size * 0.95;
+  background: $beige;
+  font: $base-font;
+  border: $dark-grey solid 2px;
+}
+input:hover, button:hover, textarea:hover, input:focus, textarea:focus {
+  background: darken($beige,10%);
+}
+button{
+  font-size: $base-font-size*1.1;
+  font-weight: bold;
+  padding: $base-padding*0.25 $base-padding*0.5;
+  @include border-radius(5px);
+}
+
+// Form Table Styles
+form table {
+  width: 100%;
+  background: $body-background;
+  @include light-box-shadow();
+  @include light-text-shadow();
+  h2 {
+    color: $beige;
+    margin: 0;
+    text-align: right;
+  }
+  td {
+  }
+  th, td {
+    padding: $base-padding/2 $base-padding/2;
+  }
+  th {
+    vertical-align: top;
+    text-align: right;
+  }
+  label {
+    color: $beige;
+  }
+  textarea {
+    width: 75%
+  }
 }

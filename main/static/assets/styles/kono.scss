@@ -50,6 +50,14 @@ $column-map: (
   12: "twelve"
 );
 
+.column {
+  padding: 0 $base-padding/2;
+}
+
+.column + .column {
+  margin-top: $gutter-width;
+}
+
 @media (min-width: $tablet-width) {
   @each $digit, $number in $column-map {
     .#{$number}-cell.column {
@@ -60,7 +68,9 @@ $column-map: (
     }
   }
   .column {
+    padding: 0;
     & + & {
+      margin-top: 0;
       margin-left: $gutter-width;
     }
     float: left;
@@ -86,6 +96,7 @@ $column-map: (
 
 body {
   font-size: $body-font-size;
+  color: $dark-grey;
   font-family: $body-font;
   background: $body-background;
 }
@@ -96,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @for $i from 1 through 6 {
   h#{$i} {
-    margin-bottom: $header-font-size - $header-font-df * 2 * ($i - 1);
+    margin-top: $base-padding;
     font-size: $header-font-size * 1.75 - $header-font-df * ($i - 1);
     margin-bottom: $header-font-size - $header-font-df * 2 * ($i - 1);
   }

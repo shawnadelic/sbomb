@@ -36,17 +36,14 @@
               <li><a href="{% url 'bands:index' %}">Bands</a></li>
             </div>
             <div>
-              <li><a href="/">Submit</a></li>
+              <li><a href="{% url 'feedback:submit' %}">Feedback</a></li>
             </div>
             <div>
               <li><a href="{% url 'about_us' %}">About Us</a></li>
             </div>
           </ul>
         </nav>
-        {% block before_content %}{% endblock %}
-        <div class="content">
         {% block content %}{% endblock %}
-        </div>
       </div>
     </div>
     <div class="footer container row">

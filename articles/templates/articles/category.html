@@ -2,17 +2,8 @@
 {% load thumbnail %}
 
 {% block content %}
-  <h1>{{ category.title }}</h1>
-  <p>{{ category.description }}</p>
-  {% if other_categories %}
-    <h2>Other Categories:</h2>
-    <ul>
-      {% for other_category in other_categories %}
-        <li><a href='{% url 'articles:category' other_category.slug %}'>{{ other_category.title }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-  <div class="article-preview">
+  <div class="content">
+    <h2><a href="{% url 'articles:all_articles' %}">All Articles</a> &gt; {{ category.title }}</h2>
     <div class="row">
     {% for article in articles_by_category %}
       <div class="three-cell column">
@@ -24,8 +15,6 @@
     {% endfor %}
     </div>
   </div>
-
-
   {% if is_paginated %}
   <ul class="pager">
     {% if page_obj.has_previous %}
@@ -35,6 +24,7 @@
     {% if page_obj.has_next %}
     <li><a href="?page={{ page_obj.next_page_number}}">Next</a></li>
     {% endif %}
-  </ul>
+    </ul>
+  </div>
   {% endif %}
 {% endblock %}

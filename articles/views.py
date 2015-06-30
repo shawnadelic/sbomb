@@ -37,7 +37,6 @@ class CategoryView(generic.ListView):
         slug = self.kwargs['slug']
         context = super(CategoryView, self).get_context_data(**kwargs)
         context["category"] = get_object_or_404(Category, slug=slug)
-        context["other_categories"] = Category.objects.exclude(title=context["category"])
         return context
 
     def get_queryset(self, **kwargs):
