@@ -18,6 +18,12 @@ a:hover{
 .footer {
   color: $beige;
   padding: 0.8rem;
+  a {
+    color: $beige;
+  }
+  a:hover {
+    color: darken($beige, 15%);
+  }
 }
 
 .site-title {
@@ -50,19 +56,44 @@ a:hover{
     @include light-box-shadow();
   }
 }
-.article-content{
-  margin-top: $base-padding;
+.inset-content{
+  margin-top: $base-padding*1.2;
 }
 
-.article-body {
+.inset-body {
   padding: 0;
 }
 
 .article-header{
   position: relative;
   img {
+    @include light-box-shadow();
     max-width: 100%;
     display: block;
+  }
+}
+
+// Pager
+
+.pager {
+  padding: $base-padding/2 $base-padding;
+  margin-top: $base-padding;
+  font-weight: bold;
+  list-style-type: none; 
+  color: transparentize($beige, 0.8);
+  @include light-box-shadow();
+  li {
+    display: inline;
+  }
+  li + li {
+    padding-left: $base-padding*2;
+  }
+  background: $body-background;
+  a {
+    color: beige;
+  }
+  a:hover {
+    color: darken($beige, 15%);
   }
 }
 
@@ -90,6 +121,7 @@ a:hover{
     padding: 0;
     padding-top: $header-stripe-height - $header-stripe-gutter;
     h1 {
+      @include light-text-shadow();
       font-size: 2.2rem;
       color: $beige;
       letter-spacing: -0.1rem;
@@ -162,13 +194,13 @@ a:hover{
 }
 
 // Social Media Styles
-
 .social-media {
   text-align: right;
 }
 
 // Profile Styling
 .profile-image {
+  @include light-box-shadow();
   float: right;
   max-width: 100%;
   @include border-radius(50%);
@@ -222,9 +254,16 @@ form table {
   @include light-box-shadow();
   @include light-text-shadow();
   h2 {
+    @include light-box-shadow();
+    @include light-box-inset-shadow();
     color: $beige;
     margin: 0;
     text-align: right;
+    background: #0e4389;
+    padding: 0.1em 0.5em;
+    position: relative;
+    right: -0.5em;
+    box-shadow: 0 0 10px rgba(10,10,10,0.15);
   }
   td {
   }

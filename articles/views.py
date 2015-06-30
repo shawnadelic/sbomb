@@ -7,7 +7,7 @@ from django.http import Http404
 from django.template.defaultfilters import slugify
 from .models import Article, Category
 
-default_pagination = 8
+default_pagination = 12
 
 class AllArticlesView(generic.ListView):
     template_name = 'articles/articles.html'
@@ -18,14 +18,17 @@ class AllArticlesView(generic.ListView):
         """ Return all articles """
         return Article.objects.filter(status=Article.PUBLISHED).order_by('-pub_date')
 
-class ArticleView(generic.DetailView):
-    template_name = 'articles/article.html'
-    model = Article
-    context_object_name = 'article'
+def article(request, slug):
+    article = get_object_or_404(Article, slug=slug)
+    recent_articles = Article.objects.order_by('-pub_date').exclude(id=article.id)[:6]
+    return render(request, 'articles/article.html',
+    {
+        'article': article,
+        'recent_articles': recent_articles
+    })
 
-    def get_context_data(self, **kwargs):
-        context = super(ArticleView, self).get_context_data(**kwargs)
-        return context
+    def get_absolute_url(self):
+        return "/a/2/%s" % str(self.slug)
 
 class CategoryView(generic.ListView):
     template_name = 'articles/category.html'

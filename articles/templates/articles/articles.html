@@ -7,7 +7,7 @@
     <div class="row">
     {% for article in articles %}
       <div class="three-cell column">{% include 'articles/article_preview.html' %}</div>
-      {% if forloop.counter|divisibleby:"4" %}
+      {% if forloop.counter|divisibleby:"4" and not forloop.last %}
         </div><div class="row">
       {% endif %}
     {% endfor %}
@@ -18,7 +18,7 @@
       {% if page_obj.has_previous %}
       <li><a href="?page={{ page_obj.previous_page_number}}">Prev</a></li>
       {% endif %}
-      {{ page_obj.number }}
+      <li>{{ page_obj.number }}</li>
       {% if page_obj.has_next %}
       <li><a href="?page={{ page_obj.next_page_number}}">Next</a></li>
       {% endif %}

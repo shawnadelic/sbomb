@@ -47,12 +47,19 @@
       </div>
     </div>
     <div class="footer container row">
-      <div class="six-cell column">Content</div>
-      <div class="six-cell column social-media">
+      <div class="four-cell column">
+        <div><a href="{% url 'about_us' %}">About Us</a></div>
+      </div>
+      <div class="four-cell column">
+        <div><a href="{% url 'about_us' %}">Site Map</a></div>
+      </div>
+      <div class="four-cell column social-media">
       <a href="http://www.facebook.com/"><img src="{% static 'assets/images/social-facebook.png' %}" style="width:60px"></a>
       <a href="http://www.twitter.com/"><img src="{% static 'assets/images/social-twitter.png' %}" style="width:60px"></a>
       <a href="http://www.instagram.com/"><img src="{% static 'assets/images/social-instagram.png' %}" style="width:60px"></a>
       <a href="http://www.youtube.com/"><img src="{% static 'assets/images/social-youtube.png' %}" style="width:60px"></a>
+      <div>&copy; 2015 Sugarbomb DIY</div>
+      </div>
     </div>
     <script src="{% static 'assets/scripts/jquery.min.js' %}"></script>
     <script src="{% static 'assets/scripts/jquery.slicknav.js' %}"></script>
