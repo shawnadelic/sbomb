@@ -209,8 +209,7 @@ a:hover{
 // Alert Styles
 
 .alert {
-  max-width: 50%;
-  margin: 0 auto;
+  font-weight: bold;
   padding: $base-padding/2 $base-padding;
   @include light-box-shadow();
   &.success {
@@ -225,6 +224,15 @@ a:hover{
   &.error {
     background-color: #fc0;
   }
+}
+.errorlist {
+  font-size: $base-font-size * 0.95;
+  font-weight: bold;
+  list-style-type: none;
+  padding: $base-padding/2 $base-padding;
+  margin: 0 0 $base-padding/2;
+  background-color: #fc0;
+  @include light-box-shadow();
 }
 
 // General Form Styles

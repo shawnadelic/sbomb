@@ -2,6 +2,8 @@
 
 {% block content %}
   <div class="inset-content">
+    
+    {% if messages %}<div class="row">{% include 'messages.html' %}</div>{% endif %}
     <div class="row">
       <div class="seven-cell inset-body column">
         <form method="post" action="">
@@ -19,7 +21,6 @@
       <div class="five-cell column">
         <p>Got an idea for something you'd like us to write about? Shoot a suggestion our way and we'll try to get it covered!</p>
         <p>We're also on the lookout for contributers so if you're interesting in being a Sugarbomb DIY contributor, send us a message, because we'd love to meet you!</p>
-        {% include 'messages.html' %}
       </div>
     </div>
   </div>

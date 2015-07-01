@@ -28,6 +28,9 @@
               <p>{{ article.body|safe }}</p>
             </div>
           </div>
+          <div class="row">
+            {% include 'disqus.html' %}
+          </div>
         </div>
         <div class="three-cell column">
           {% for article in recent_articles %}
