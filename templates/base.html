@@ -27,8 +27,8 @@
             <div>
               <li><a href="{% url 'articles:all_articles' %}">Articles</a>
                 <ul>
-                  <li><a href="{% url 'articles:category' 'music-articles' %}">Music Articles</a></li>
                   <li><a href="{% url 'articles:category' 'album-reviews' %}">Album Reviews</a></li>
+                  <li><a href="{% url 'articles:category' 'featured-artists' %}">Featured Artists</a></li>
                 </ul>
               </li>
             </div>
@@ -54,10 +54,10 @@
         <div><a href="{% url 'about_us' %}">Site Map</a></div>
       </div>
       <div class="four-cell column social-media">
-      <a href="http://www.facebook.com/"><img src="{% static 'assets/images/social-facebook.png' %}" style="width:60px"></a>
-      <a href="http://www.twitter.com/"><img src="{% static 'assets/images/social-twitter.png' %}" style="width:60px"></a>
-      <a href="http://www.instagram.com/"><img src="{% static 'assets/images/social-instagram.png' %}" style="width:60px"></a>
-      <a href="http://www.youtube.com/"><img src="{% static 'assets/images/social-youtube.png' %}" style="width:60px"></a>
+      <a href="https://www.facebook.com/sugarbombdiy"><img src="{% static 'assets/images/social-facebook.png' %}" style="width:60px"></a>
+      <a href="https://twitter.com/sugarbombdiy"><img src="{% static 'assets/images/social-twitter.png' %}" style="width:60px"></a>
+      <a href="https://instagram.com/sugarbombdiy/"><img src="{% static 'assets/images/social-instagram.png' %}" style="width:60px"></a>
+      <a href="https://www.youtube.com/channel/UCAfolxlyzNMO1DKlZTXR5FA"><img src="{% static 'assets/images/social-youtube.png' %}" style="width:60px"></a>
       <div>&copy; 2015 Sugarbomb DIY</div>
       </div>
     </div>
@@ -67,7 +67,9 @@
 {% block extra_scripts %}{% endblock %}
     <script>
       $(function(){
-          $('nav > ul').slicknav();
+          $('nav > ul').slicknav(
+{allowParentLinks: true}
+);
           });
     </script>
   </body>

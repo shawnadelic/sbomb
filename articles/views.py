@@ -20,7 +20,7 @@ class AllArticlesView(generic.ListView):
 
 def article(request, slug):
     article = get_object_or_404(Article, slug=slug)
-    recent_articles = Article.objects.order_by('-pub_date').exclude(id=article.id)[:6]
+    recent_articles = Article.objects.filter(status=Article.PUBLISHED).order_by('-pub_date').exclude(id=article.id)[:6]
     return render(request, 'articles/article.html',
     {
         'article': article,

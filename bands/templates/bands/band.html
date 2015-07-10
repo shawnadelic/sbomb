@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="content">
-  {{ band.name }}
-  {{ band.website }}
+  <h2><a href='{{ band.website }}'>{{ band.name }}</a></h2>
+  <p>{{ band.bio }}</p>
 </div>
 {% endblock %}

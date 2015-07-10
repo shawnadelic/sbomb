@@ -367,13 +367,16 @@ th {
 @media (min-width: 768px) {
   .container.row {
     width: 80%; } }
-.cell {
+.cell, .inset {
   padding: 0 0.5rem; }
 
 .column + .column {
   margin-top: 1%; }
 
 @media (min-width: 568px) {
+  .inset {
+    padding: 0; }
+
   .one-cell.column {
     width: 7.41667%; }
 

@@ -5,6 +5,7 @@
   <div class="content">
     <h2><a href="{% url 'articles:all_articles' %}">All Articles</a> &gt; {{ category.title }}</h2>
     <div class="row">
+    {% if articles_by_category %}
     {% for article in articles_by_category %}
       <div class="three-cell column">
         {% include 'articles/article_preview.html' %}
@@ -13,6 +14,9 @@
       </div><div class="row">
       {% endif %}
     {% endfor %}
+    {% else %}
+      <p>No articles found for this category! <em>(But I'm sure some will be coming very soon, so keep your eyes peeled!)</em></p>
+    {% endif %}
     </div>
   {% if is_paginated %}
   <ul class="pager">

@@ -2,6 +2,9 @@
 
 {% block content %}
   <div class="content">
+    <div class="row"><h2>Bands</h2>
+    <p>Good news! We are building a directory of local bands worth checking out. Additional tools will be available to help bands network, book shows, and connect with other bands. If you would like to be added to the directory, send us a suggestion via our <a href='{% url 'feedback:submit' %}'>feedback form</a>!</p></div>
+    <div class="row">
     <ul>
     {% for band in all_bands %}
     <li><a href='{% url 'bands:band' band.id %}'>{{ band.name }}</a></li>
@@ -20,6 +23,7 @@
       {% endif %}
       </ul>
     {% endif %}
+    </div>
   </div>
 
 {% endblock %}
