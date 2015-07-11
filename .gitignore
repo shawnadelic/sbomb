@@ -1,3 +1,5 @@
 sbomb/settings.py
 static/*
 media/*
+*.pyc
+*.sqlite3
