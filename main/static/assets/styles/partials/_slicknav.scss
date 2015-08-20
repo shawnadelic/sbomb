@@ -93,6 +93,7 @@ $nav-letter-spacing: 0.05*$base-padding;
 
 /* Button */
 .slicknav_btn {
+  z-index: 20;
   position: relative;
   display: block;
   vertical-align: middle;
@@ -106,7 +107,7 @@ $nav-letter-spacing: 0.05*$base-padding;
   text-decoration:none;
   @include text-shadow($base-shadow);
   @include border-radius($base-border-radius);
-  background: $slicknav-background;
+  //background: $slicknav-background;
   &:hover {
     background: $nav-background-hover;
   }
