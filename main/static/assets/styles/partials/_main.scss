@@ -39,6 +39,16 @@ a:hover{
   left: 0;
 }
 
+.site-logo {
+  width: 75%;
+}
+
+@media (min-width: $tablet-width){
+    .site-logo {
+      width: 37.5%;
+    }
+}
+
 // Articles
 
 .article-preview{
