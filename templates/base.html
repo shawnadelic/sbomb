@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-{% load pipeline %}
 <html lang="en">
   <head>
     <title>{% block title %}Sugarbomb DIY{% endblock %}</title>
@@ -10,8 +9,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
     {% block extra_meta_tags %}{% endblock %}
 
-    {% stylesheet 'main' %}
-    <link href='/static/assets/styles/sbomb.css' rel='stylesheet' type='text/css'>
+    <link href='{% static 'assets/styles/sbomb.css' %}' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Changa+One' rel='stylesheet' type='text/css'>
     {% block extra_styles %}{% endblock %}
@@ -70,9 +68,12 @@
     <script>
       $(function(){
           $('nav > ul').slicknav(
-{allowParentLinks: true}
-);
-          });
+          {
+            allowParentLinks: true,
+            label: ""
+          }
+          );
+      });
     </script>
   </body>
 </html>

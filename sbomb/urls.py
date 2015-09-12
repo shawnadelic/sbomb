@@ -18,16 +18,17 @@ from django.conf.urls import include, url, static
 from django.contrib import admin
 from django.views.generic import TemplateView
 
-import main.views, articles.views
+import main.views
 
 urlpatterns = [
     url(r'^$', main.views.index, name='index'),
     url(r'^about_us/$', TemplateView.as_view(template_name='main/about_us.html'), name='about_us'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^contribute/login/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^articles/', include('articles.urls', namespace='articles')),
     url(r'^profiles/', include('profiles.urls', namespace='profiles')),
     url(r'^bands/', include('bands.urls', namespace='bands')),
     url(r'^feedback/', include('feedback.urls', namespace='feedback')),
+    url(r'^contribute/', include('contribute.urls', namespace='contribute')),
+    url(r'^accounts/', include('registration.backends.default.urls')),
 ] + static.static( settings.MEDIA_URL, document_root=settings.MEDIA_ROOT )
