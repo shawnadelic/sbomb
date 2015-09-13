@@ -19,7 +19,7 @@ class Article(models.Model):
     status = models.IntegerField(choices=STATUSES, default=DRAFT)
     categories = models.ManyToManyField('Category', blank=True)
     featured = models.BooleanField(default=False)
-    image = models.ImageField(upload_to="articles/%Y/%m/%d", null=True)
+    image = models.ImageField(upload_to="articles/%Y/%m/%d", null=True, blank=True)
 
     def __str__(self):
         return str(self.title)
