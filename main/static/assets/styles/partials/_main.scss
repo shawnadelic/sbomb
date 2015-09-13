@@ -70,6 +70,11 @@ a:hover{
   padding: 0;
 }
 
+.inset {
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
 .article-header{
   position: relative;
   img {
@@ -96,7 +101,7 @@ a:hover{
   }
   background: $body-background;
   a {
-    color: beige;
+    color: $beige;
   }
   a:hover {
     color: darken($beige, 15%);
@@ -146,12 +151,12 @@ a:hover{
 
 .caption {
   a {
-    color: beige;
+    color: $beige;
   }
   a:hover {
     color: #fe2d72;
   }
-  color: beige;
+  color: $beige;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -294,4 +299,8 @@ form table {
   textarea {
     width: 75%
   }
+}
+
+.profile-photo {
+  @include clearfix();
 }
