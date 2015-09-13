@@ -74,7 +74,7 @@ a:hover{
   position: relative;
   img {
     @include light-box-shadow();
-    max-width: 100%;
+    width: 100%;
     display: block;
   }
 }
