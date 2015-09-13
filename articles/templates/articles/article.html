@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load staticfiles %}
 
 {% block title %}
   {{ article.title }} - {{ block.super }}
@@ -12,9 +13,17 @@
         <div class="nine-cell inset-body column">
           <div class="row">
             <div class="article-header">
+              {% if article.image %}
               {% thumbnail article.image "1000x400" crop="center" as photo %}
               <img src="{{ photo.url }}">
               {% endthumbnail %}
+              {% else %}
+              {% with "http://"|add:request.get_host|add:STATIC_URL|add:"assets/images/default-bg.png" as path %}
+                  {% thumbnail path "1000x400" crop="center" as photo %}
+                  <img src="{{ photo.url }}">
+                  {% endthumbnail %}
+              {% endwith %}
+              {% endif %}
               <div class="caption">
                 <span class="title header">{{ article.title }}</span>
                 {% if article.author %}<span class="info">Written by <a href='{% url 'profiles:profile_view' article.author.id %}'>{{ article.author.first_name }}</a></span>{% endif %}
