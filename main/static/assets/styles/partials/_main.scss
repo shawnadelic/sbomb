@@ -219,7 +219,14 @@ a:hover{
 // Profile Styling
 .profile-image {
   @include light-box-shadow();
-  float: right;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  @media (min-width: $tablet-width){
+    float: right;
+    margin-left: 1.5rem;
+  }
   max-width: 100%;
   @include border-radius(50%);
 }

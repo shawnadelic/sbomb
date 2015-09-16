@@ -2,13 +2,15 @@
 
 {% block content %}
 <div class="content">
-  <h1>Arts, Music, and Local Culture</h1>
-  <p>We are an independent website established in order to shine a light on local arts, music, and culture.</p>
+  <h1>Supporting Arts and Community</h1>
+    <p>Sugarbomb DIY is an independent publication established to support local arts, music, and DIY culture.</p>
+    <p>We believe in supporting local artists and want to change the way people discover and enjoy their art and culture. Our primary goals are to bring people together and to strengthen and support arts in the community by providing a channel for unique and talented artists to connect with their audience online.</p>
+    <p>We are also big believers in the DIY ethos as a method for empowering communities and driving important social change. DIY is founded on the principles of independence and self-sufficiency, and both of these are essential requirements for the self-expression that drives us as artists and as human beings.</p>
   <h1>Sugarbombers</h1>
   <p>Meet the Sugarbombers</p>
   <ul>
-    <li><a href="#">Luke</a></li>
-    <li><a href="#">Mayra</a></li>
+    <li><a href="{% url 'profiles:profile_view' 3 %}">Luke</a></li>
+    <li><a href="{% url 'profiles:profile_view' 2 %}">Mayra</a></li>
     <li><a href="{% url 'profiles:profile_view' 1 %}">Shawn</a></li>
   </ul>
 </div>

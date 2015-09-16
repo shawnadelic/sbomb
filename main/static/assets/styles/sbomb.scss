@@ -109,16 +109,17 @@ h1, h2, h3, h4, h5, h6 {
   h#{$i} {
     margin-top: $base-padding;
     font-size: $header-font-size * 1.75 - $header-font-df * ($i - 1);
-    margin-bottom: $header-font-size - $header-font-df * 2 * ($i - 1);
+    //margin-bottom: $header-font-size - $header-font-df * 2 * ($i - 1);
   }
 }
 
 p {
-  margin: 0;
+  margin-top: 1rem;
+  line-height: 1.75rem;
 }
 
 p + p {
-  margin: $header-font-size*0.5 0 0;
+  //margin: $header-font-size*0.5 0 0;
 }
 
 @import "partials/horizontal-nav.scss";
