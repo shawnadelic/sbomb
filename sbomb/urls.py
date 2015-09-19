@@ -30,5 +30,4 @@ urlpatterns = [
     url(r'^bands/', include('bands.urls', namespace='bands')),
     url(r'^feedback/', include('feedback.urls', namespace='feedback')),
     url(r'^contribute/', include('contribute.urls', namespace='contribute')),
-    url(r'^accounts/', include('registration.backends.default.urls')),
 ] + static.static( settings.MEDIA_URL, document_root=settings.MEDIA_ROOT )
