@@ -1,9 +1,30 @@
 <html>
   <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Contribute{% endblock %}</title>
   </head>
   <body>
-  {% block content %}
-  {% endblock %}
+{% block content %}
+  <div>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  </div>
+  <div>Hello, {{ user.first_name }}!</div>
+    <nav>
+      <ul>
+        {% if perms.articles.add_article %}
+        <li><a href="{% url 'contribute:articles_add' %}">Add Article</a></li>
+        <li><a href="{% url 'contribute:articles_list' %}">List My Article</a></li>
+        {% endif %}
+      </ul>
+      <ul>
+        <li><a href="{% url 'contribute:logout' %}">Logout</a></li>
+      </ul>
+    </nav>
+{% endblock %}
   </body>
 </html>

@@ -8,9 +8,6 @@ from django.contrib.auth.decorators import login_required, permission_required
 from .forms import ArticleForm
 from articles.models import Article
 
-def index(request):
-    return HttpResponse("Hello world!")
-
 def login(request):
     if request.user.is_authenticated():
         return redirect('contribute:index')
@@ -26,6 +23,7 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
+    messages.success(request, "Successfully logged out!")
     return redirect('/contribute/login')
 
 @login_required(login_url='/contribute/login')
