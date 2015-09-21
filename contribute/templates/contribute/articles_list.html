@@ -1,0 +1,22 @@
+{% extends 'contribute/contribute.html' %}
+{% block content %}
+  {{ block.super }}
+  <h2>Drafts</h2>
+    <ul>
+  {% for article in drafts %}
+  <li>{{ article.title }}<br>[Edit] [Preview] [Submit] [Delete]</li>
+  {% endfor %}
+    </ul>
+  <h2>Submitted</h2>
+    <ul>
+  {% for article in submitted %}
+  <li>{{ article.title }}<br>[Unsubmit]</li>
+  {% endfor %}
+    </ul>
+  <h2>Published</h2>
+    <ul>
+  {% for article in published %}
+      <li>{{ article.title }}</li>
+  {% endfor %}
+    </ul>
+{% endblock %}

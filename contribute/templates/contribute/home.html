@@ -1,17 +1,5 @@
 {% extends 'contribute/contribute.html' %}
 {% block content %}
   {{ block.super }}
-  <div>Hello, {{ user.first_name }}</div>
-    <nav>
-      <ul>
-        {% if perms.articles.add_article %}
-        <li><a href="">Add Article</a></li>
-        {% endif %}
-        <li><a href="{% url 'contribute:logout' %}">Logout</a></li>
-      </ul>
-    </nav>
-  <table>
-  {{ form.media }}
-  {{ form.as_table }}
-  </table>
+  <p>This is my home</p>
 {% endblock %}
