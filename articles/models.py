@@ -27,6 +27,9 @@ class Article(models.Model):
     def get_absolute_url(self):
         return '/articles/%s' % self.slug
 
+    class Meta:
+        permissions = (('can_publish', 'Can publish articles'),)
+
 class Category(models.Model):
     title = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True, unique=True)
