@@ -1,11 +1,16 @@
-{% extends 'contribute/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
+<div class="content">
+{% if messages %}<div class="row">{% include 'messages.html' %}</div>{% endif %}
 <form action="" method="post">
+  <table>
   {% csrf_token %}
-  <label for="username">Username</label>
-  <input type="text" name="username" autofocus>
-  <label for="password">Password</label>
-  <input type="password" name="password">
-  <input type="submit" value="Login">
+  <tr><th><label for="username">Username</label></th>
+    <td><input type="text" name="username" autofocus></td></tr>
+  <tr><th><label for="password">Password</label></th>
+    <td><input type="password" name="password"></td></tr>
+  <tr><th></th><td><button name="submit">Login</button></td></tr>
+</table>
 </form>
+</div>
 {% endblock %}
