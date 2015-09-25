@@ -10,15 +10,16 @@
         padding-top: 80px;
         padding-bottom: 80px;
         font-family: 'Patua One';
+        background: url('/static/contribute/assets/images/lined_paper.png');
+      }
+      .django-ckeditor-widget {
+        width: 100%;
       }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -30,14 +31,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Sugarbombers</a>
+          <a class="navbar-brand" href="#">Sugarbomb</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'contribute:home' %}">Home</a></li>
         {% if perms.articles.add_article %}
         <li><a href="{% url 'contribute:articles_add' %}">Add Article</a></li>
-        <li><a href="{% url 'contribute:articles_list' %}">List My Article</a></li>
+        <li><a href="{% url 'contribute:articles_list' %}">My Articles</a></li>
         {% endif %}
         <li><a href="{% url 'contribute:logout' %}">Logout</a></li>
           </ul>
@@ -54,6 +55,18 @@
   </ul>
   {% endif %}
 {% endblock %}
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+(function($){
+ $('.confirm-delete').click(function(){
+   if(!confirm("Are you sure you want to delete this?\n\nThis delete can't be undone."))
+      return false;
+   });
+ })(jQuery);
+</script>
   </body>
 </div>
 </html>

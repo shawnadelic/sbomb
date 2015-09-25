@@ -2,15 +2,19 @@
 {% block content %}
 <div class="content">
 {% if messages %}<div class="row">{% include 'messages.html' %}</div>{% endif %}
+<div class="row">
+<div class="four-cell column">
 <form action="" method="post">
   <table>
   {% csrf_token %}
+  <tr><th></th><td><h2>Contributor Login</h2>
+              </td></tr>
   <tr><th><label for="username">Username</label></th>
     <td><input type="text" name="username" autofocus></td></tr>
   <tr><th><label for="password">Password</label></th>
     <td><input type="password" name="password"></td></tr>
   <tr><th></th><td><button name="submit">Login</button></td></tr>
 </table>
-</form>
-</div>
+</form></div>
+</div></div>
 {% endblock %}

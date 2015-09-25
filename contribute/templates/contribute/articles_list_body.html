@@ -1,0 +1,37 @@
+{% if not drafts and not submitted and not published %}
+<h2>Works of Genius Coming Soon</h2>
+<p>No articles found! <a href="{% url 'contribute:articles_add' %}">Better get to work...</a> :)</p>
+{% endif %}
+{% if drafts %}
+<h2>Drafts</h2>
+<ul>
+{% for article in drafts %}
+<li>{{ article.title }}<br>
+<a href="../edit/{{ article.preview_hash }}" class="glyphicon glyphicon-pencil" style="font-size: 2rem;"></a>
+<a href="../preview/{{ article.preview_hash }}" class="glyphicon glyphicon-expand" style="font-size: 2rem; padding-left: 1rem;"></a>
+<a href="../submit/{{ article.preview_hash }}" class="glyphicon glyphicon-share" style="font-size: 2rem; padding-left: 1rem;"></a>
+<a href="../delete/{{ article.preview_hash }}" class="glyphicon glyphicon-trash confirm-delete" style="font-size: 2rem; padding-left: 5rem; color: #dd0000;"></a>
+</li>
+{% endfor %}
+  </ul>
+{% endif %}
+{% if submitted %}
+<h2>Submitted</h2>
+  <ul>
+{% for article in submitted %}
+<li>{{ article.title }}<br>
+<a href="../unsubmit/{{ article.preview_hash }}" class="glyphicon glyphicon-remove confirm-unsubmit" style="font-size: 2rem;"></a>
+<a href="../preview/{{ article.preview_hash }}" class="glyphicon glyphicon-expand" style="font-size: 2rem; padding-left: 1rem;"></a>
+<a href="../delete/{{ article.preview_hash }}" class="glyphicon glyphicon-trash confirm-delete" style="font-size: 2rem; padding-left: 5rem; color: #dd0000;"></a>
+</li>
+{% endfor %}
+  </ul>
+{% endif %}
+{% if published %}
+<h2>Published</h2>
+  <ul>
+{% for article in published %}
+<li><a href="{% url 'articles:article_view' article.slug %}">{{ article.title }}</a> - {{ article.pub_date|date:"F j, Y" }}</li>
+{% endfor %}
+    </ul>
+{% endif %}
