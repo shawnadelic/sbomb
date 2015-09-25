@@ -1,4 +1,5 @@
 import datetime
+from base64 import urlsafe_b64encode as url_encode
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
@@ -37,6 +38,9 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return '/articles/%s' % self.slug
+
+    def preview_hash(self):
+        return url_encode(str(self.id))
 
     class Meta:
         permissions = (('can_publish', 'Can publish articles'),)

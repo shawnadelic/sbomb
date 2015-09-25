@@ -13,9 +13,13 @@
         <div class="nine-cell inset-body column">
           <div class="row">
             <div class="article-header">
-              {% thumbnail article.image "1000x500" crop="center" as photo %}
-              <img src="{{ photo.url }}">
-              {% endthumbnail %}
+              {% if article.image %}
+                {% thumbnail article.image "1000x500" crop="center" as photo %}
+                <img src="{{ photo.url }}">
+                {% endthumbnail %}
+              {% else %}
+                <img src="{% static 'assets/images/default-bg.png' %}">
+              {% endif %}
               <div class="caption">
                 <span class="title header">{{ article.title }}</span>
                 {% if article.author %}<span class="info">Written by <a href='{% url 'profiles:profile_view' article.author.id %}'>{{ article.author.first_name }}</a></span>{% endif %}
@@ -31,16 +35,11 @@
           </div>
           <div class="row">
 	        <div class="inset">
-              {% include 'disqus.html' %}
             </div>
           </div>
         </div>
         <div class="three-cell column inset">
-          {% for article in recent_articles %}
-            <div class="row">
-            {% include 'articles/article_preview.html' %}
-            </div>
-          {% endfor %}
+          <a href="javascript:history.back()" style="font-weight: bold">Go Back</a>
         </div>
       </div>
     </div>
