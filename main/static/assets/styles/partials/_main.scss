@@ -236,6 +236,7 @@ a:hover{
 .alert {
   font-weight: bold;
   padding: $base-padding/2 $base-padding;
+  display: inline-block;
   @include light-box-shadow();
   &.success {
     background-color: #090;
@@ -254,10 +255,11 @@ a:hover{
   font-size: $base-font-size * 0.95;
   font-weight: bold;
   list-style-type: none;
-  padding: $base-padding/2 $base-padding;
-  margin: 0 0 $base-padding/2;
-  background-color: #fc0;
-  @include light-box-shadow();
+  padding: 0;
+  margin: 0;
+  li {
+    color: #1EA2FF;
+  }
 }
 
 // General Form Styles
@@ -271,7 +273,7 @@ input, textarea, button {
   border: $dark-grey solid 2px;
 }
 input:hover, button:hover, textarea:hover, input:focus, textarea:focus {
-  background: darken($beige,10%);
+  background: #FDFDFD;
 }
 button{
   font-size: $base-font-size*1.1;
@@ -284,19 +286,13 @@ button{
 form table {
   width: 100%;
   background: $body-background;
+  padding: $base-padding/2 $base-padding/2;
   @include light-box-shadow();
   @include light-text-shadow();
   h2 {
-    @include light-box-shadow();
-    @include light-box-inset-shadow();
     color: $beige;
     margin: 0;
     text-align: right;
-    background: #0e4389;
-    padding: 0.1em 0.5em;
-    position: relative;
-    right: -0.5em;
-    box-shadow: 0 0 10px rgba(10,10,10,0.15);
   }
   td {
   }
