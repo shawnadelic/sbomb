@@ -14,21 +14,19 @@ class Article(models.Model):
     )
     title = models.CharField(max_length=100)
     slug = models.SlugField(blank=True, null=True, unique=True)
-    body = RichTextField(blank=True)
+    body = RichTextField(blank=True, null=True)
     pub_date = models.DateTimeField("Publish date", db_index=True, editable=True, default=datetime.datetime.now)
     author = models.ForeignKey(User, related_name='article_author', null=True, blank=True)
     editor = models.ForeignKey(User, related_name='article_editor', null=True, blank=True)
     status = models.IntegerField(choices=STATUSES, default=DRAFT)
     categories = models.ManyToManyField('Category', blank=True)
     featured = models.BooleanField(default=False)
-    image = models.ImageField(upload_to="articles/%Y/%m/%d", null=True, blank=True)
+    image = models.ImageField(verbose_name='Header Image',upload_to="articles/%Y/%m/%d", null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        if self.title == '':
-            raise ValidationError
         if self.slug and self.slug != '':
-            if Article.objects.filter(slug=self.slug).exists():
-                raise ValidationError
+            if Article.objects.filter(slug=self.slug).exclude(id=self.id).exists():
+                raise ValidationError("Slug already exists")
         else:
             self.slug = None
         super(Article, self).save(*args, **kwargs)
