@@ -19,10 +19,10 @@ a:hover{
   color: $beige;
   padding: 0.8rem;
   a {
-    color: $beige;
+    color: #aaa;
   }
   a:hover {
-    color: darken($beige, 15%);
+    color: darken(#aaa, 15%);
   }
 }
 
@@ -287,6 +287,7 @@ form table {
   width: 100%;
   background: $body-background;
   padding: $base-padding/2 $base-padding/2;
+  border-collapse: separate;
   @include light-box-shadow();
   @include light-text-shadow();
   h2 {

@@ -12,6 +12,7 @@
     <link href='{% static 'assets/styles/sbomb.css' %}' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Changa+One' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" href="/static/assets/favicon.png">
     {% block extra_styles %}{% endblock %}
   </head>
   <body>
@@ -47,13 +48,11 @@
       </div>
     </div>
     <div class="footer container row">
-      <div class="four-cell column">
+      <div class="six-cell column">
         <div><a href="{% url 'about_us' %}">About Us</a></div>
+        <div><a href="{% url 'contribute:login' %}">Contributor Login</a></div>
       </div>
-      <div class="four-cell column">
-        <div><a href="{% url 'about_us' %}">Site Map</a></div>
-      </div>
-      <div class="four-cell column social-media">
+      <div class="six-cell column social-media">
       <a href="https://www.facebook.com/sugarbombdiy"><img src="{% static 'assets/images/social-facebook.png' %}" style="width:60px"></a>
       <a href="https://twitter.com/sugarbombdiy"><img src="{% static 'assets/images/social-twitter.png' %}" style="width:60px"></a>
       <a href="https://instagram.com/sugarbombdiy/"><img src="{% static 'assets/images/social-instagram.png' %}" style="width:60px"></a>
