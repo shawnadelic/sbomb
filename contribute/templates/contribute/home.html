@@ -3,4 +3,12 @@
   {{ block.super }}
   <h2>Welcome!</h2>
   <p>Logged in as {{ user.first_name }}.</p>
+  <div style="margin-top: 50px">
+    <div class="col-md-6" style="font-size: 4rem; text-align: center; margin-top: 25px;">
+      <a href="{% url 'contribute:articles_add' %}"><span class="glyphicon glyphicon-plus" style="font-size: 7rem"></span><br>Add</a>
+    </div>
+    <div class="col-md-6" style="font-size: 4rem; text-align: center; margin-top: 25px;">
+      <a href="{% url 'contribute:articles_list' %}"><span class="glyphicon glyphicon-th-list" style="font-size: 7rem"></span><br>List</a>
+    </div>
+  </div>
 {% endblock %}

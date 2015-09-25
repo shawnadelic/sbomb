@@ -1,27 +1,5 @@
 {% extends 'contribute/base.html' %}
 {% block content %}
   {{ block.super }}
-  <h2>Drafts</h2>
-    <ul>
-  {% for article in drafts %}
-  <li>{{ article.title }}<br>
-<span class="glyphicon glyphicon-pencil" style="font-size: 2rem;"></span>
-  <a href="../preview/{{ article.preview_hash }}" class="glyphicon glyphicon-expand" style="font-size: 2rem; padding-left: 1rem;"></a>
-<span class="glyphicon glyphicon-share" style="font-size: 2rem; padding-left: 1rem;"></span>
-<span class="glyphicon glyphicon-trash" style="font-size: 2rem; padding-left: 1rem;"></span>
-  </li>
-  {% endfor %}
-    </ul>
-  <h2>Submitted</h2>
-    <ul>
-  {% for article in submitted %}
-  <li>{{ article.title }}<br>[Unsubmit]</li>
-  {% endfor %}
-    </ul>
-  <h2>Published</h2>
-    <ul>
-  {% for article in published %}
-      <li>{{ article.title }}</li>
-  {% endfor %}
-    </ul>
+  {% include 'contribute/articles_list_body.html' %}
 {% endblock %}
