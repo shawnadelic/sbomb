@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="content">
-  <h2>{{ user_profile.user.first_name }}</h2>
+  <h2><a href="{% url 'about_us' %}">About Us</a> &gt; {{ user_profile.user.first_name }}</h2>
   {% thumbnail user_profile.photo "300x300" crop="top" as photo %}
     <img src="{{ photo.url }}" class="profile-image">
   {% endthumbnail %}
