@@ -2,11 +2,14 @@
 {% block content %}
   {{ block.super }}
   <form action="" method="post">
-    <table>
     {{ form.media }}
-    {{ form.as_table }}
     {% csrf_token %}
-      <tr><th></th><td><button name="action" type="submit" value="save-draft">Save Draft</button> <button name="action" type="submit" value="submit-for-publication">Submit for Publication</button></td><tr>
-    </table>
+{% for field in form %}
+    <div class="form-group">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+{% endfor %}
+      <button name="action" type="submit" value="save-draft">Save Draft</button> <button name="action" type="submit" value="submit-for-publication">Submit for Publication</button>
   </form>
 {% endblock %}

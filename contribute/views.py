@@ -1,5 +1,7 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+import base64
+from base64 import urlsafe_b64encode as url_encode, urlsafe_b64decode as url_decode
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, Http404, HttpResponseForbidden
 from django.template import Context
 from django.contrib import messages
 from django.contrib.auth import (authenticate, login as auth_login,
@@ -8,9 +10,21 @@ from django.contrib.auth.decorators import login_required, permission_required
 from .forms import ArticleForm
 from articles.models import Article
 
+@login_required(login_url='/contribute/login')
+def articles_preview(request, article_id):
+    try:
+        article_id = int(url_decode(str(article_id)))
+    except (ValueError, TypeError):
+        raise Http404("Invalid preview URL") 
+    article = get_object_or_404(Article, id=article_id)
+    user = request.user
+    if user.id != article.author.id and not user.has_perm('articles.can_publish'):
+        return HttpResponseForbidden("Invalid")
+    return render(request, 'contribute/article_preview.html', {'article': article})
+
 def login(request):
     if request.user.is_authenticated():
-        return redirect('contribute:index')
+        return redirect('contribute:home')
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -41,11 +55,11 @@ def articles_add(request):
             if draft.is_valid():
                 draft = draft.save(commit=False)
                 draft.author = request.user
-                messages.success(request, draft)
                 draft.save()
-                messages.success(request, 'Success: Draft saved')
-                form = ArticleForm(post)
+                return render(request, 'contribute/articles_add_success.html',
+                        {'article': draft})
             else:
+                form = ArticleForm(post)
                 messages.error(request, draft.errors)
         elif post['action'] == 'submit-for-publication':
             messages.success(request, 'Success: Article submitted')

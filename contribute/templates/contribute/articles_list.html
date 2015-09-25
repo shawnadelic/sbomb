@@ -4,7 +4,12 @@
   <h2>Drafts</h2>
     <ul>
   {% for article in drafts %}
-  <li>{{ article.title }}<br>[Edit] [Preview] [Submit] [Delete]</li>
+  <li>{{ article.title }}<br>
+<span class="glyphicon glyphicon-pencil" style="font-size: 2rem;"></span>
+  <a href="../preview/{{ article.preview_hash }}" class="glyphicon glyphicon-expand" style="font-size: 2rem; padding-left: 1rem;"></a>
+<span class="glyphicon glyphicon-share" style="font-size: 2rem; padding-left: 1rem;"></span>
+<span class="glyphicon glyphicon-trash" style="font-size: 2rem; padding-left: 1rem;"></span>
+  </li>
   {% endfor %}
     </ul>
   <h2>Submitted</h2>

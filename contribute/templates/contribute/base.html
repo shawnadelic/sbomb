@@ -1,10 +1,51 @@
 <html>
   <head>
     <title>{% block title %}Contribute{% endblock %}</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+    <style>
+      body {
+        font-size: 1.8rem;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        font-family: 'Patua One';
+      }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sugarbombers</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'contribute:home' %}">Home</a></li>
+        {% if perms.articles.add_article %}
+        <li><a href="{% url 'contribute:articles_add' %}">Add Article</a></li>
+        <li><a href="{% url 'contribute:articles_list' %}">List My Article</a></li>
+        {% endif %}
+        <li><a href="{% url 'contribute:logout' %}">Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<div class="container">
 {% block content %}
-  <div>
   {% if messages %}
   <ul class="messages">
     {% for message in messages %}
@@ -12,19 +53,7 @@
     {% endfor %}
   </ul>
   {% endif %}
-  </div>
-  <div>Hello, {{ user.first_name }}!</div>
-    <nav>
-      <ul>
-        {% if perms.articles.add_article %}
-        <li><a href="{% url 'contribute:articles_add' %}">Add Article</a></li>
-        <li><a href="{% url 'contribute:articles_list' %}">List My Article</a></li>
-        {% endif %}
-      </ul>
-      <ul>
-        <li><a href="{% url 'contribute:logout' %}">Logout</a></li>
-      </ul>
-    </nav>
 {% endblock %}
   </body>
+</div>
 </html>
