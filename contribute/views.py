@@ -160,3 +160,16 @@ def articles_list(request):
               'submitted': submitted,
               'published': published }
             )
+
+@login_required(login_url='/contribute/login')
+@permission_required('articles.can_publish', raise_exception=True)
+def editor_publish(request):
+    submitted = Article.objects.filter(status=Article.SUBMITTED).order_by('-id')
+    return render(request, 'contribute/editor_publish.html', {
+            'submitted': submitted,
+        })
+
+@login_required(login_url='/contribute/login')
+@permission_required('articles.can_publish', raise_exception=True)
+def editor_publish_submit(request, article_id):
+    return render(request, 'contribute/editor_publish_submit.html')
