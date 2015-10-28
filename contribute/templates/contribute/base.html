@@ -12,6 +12,14 @@
         font-family: 'Patua One';
         background: url('/static/contribute/assets/images/lined_paper.png');
       }
+      .container-main ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      .container-main li {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+      }
       .django-ckeditor-widget {
         width: 100%;
       }
@@ -37,6 +45,9 @@
           <ul class="nav navbar-nav">
             <li><a href="{% url 'contribute:home' %}">Home</a></li>
         {% if perms.articles.add_article %}
+          {% if perms.articles.can_publish %}
+          <li><a href="{% url 'contribute:editor_publish' %}">Publish</a></li>
+          {% endif %}
         <li><a href="{% url 'contribute:articles_add' %}">Add Article</a></li>
         <li><a href="{% url 'contribute:articles_list' %}">My Articles</a></li>
         {% endif %}
@@ -45,7 +56,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-<div class="container">
+<div class="container container-main">
 {% block content %}
   {% if messages %}
   <ul class="messages">

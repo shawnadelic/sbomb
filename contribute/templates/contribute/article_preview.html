@@ -22,7 +22,7 @@
               {% endif %}
               <div class="caption">
                 <span class="title header">{{ article.title }}</span>
-                {% if article.author %}<span class="info">Written by <a href='{% url 'profiles:profile_view' article.author.id %}'>{{ article.author.first_name }}</a></span>{% endif %}
+                {% if article.author %}<span class="info">Written by <a href='{% url 'profiles:profile_view' article.author.id %}'>{{ article.author.first_name }}{% if article.author.last_name %} {{ article.author.last_name }}{% endif %}</a></span>{% endif %}
                 <span class="info">Published {{ article.pub_date|date:"F d, Y" }}</span>
               </div>
 

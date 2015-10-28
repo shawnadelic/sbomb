@@ -1,0 +1,22 @@
+{% extends 'contribute/base.html' %}
+{% block content %}
+<h2>Submitted Articles</h2>
+{% if not submitted %}
+<p>No submitted articles!</p>
+{% else %}
+<ul>
+{% for article in submitted %}
+<li>
+
+Title: {{ article.title }}<br>
+Submitted by: {{ article.author.first_name }} {{ article.author.last_name }} ( {{ article.author.email }} )<br>
+<a href="../publish/{{ article.preview_hash }}" class="glyphicon glyphicon-ok" style="font-size: 2rem;"></a>
+<a href="../../articles/edit/{{ article.preview_hash }}" class="glyphicon glyphicon-pencil" style="font-size: 2rem; padding-left: 1rem;"></a>
+<a href="../../articles/preview/{{ article.preview_hash }}" class="glyphicon glyphicon-expand" style="font-size: 2rem; padding-left: 1rem;"></a>
+<a href="../../articles/unsubmit/{{ article.preview_hash }}" class="glyphicon glyphicon-remove confirm-unsubmit" style="font-size: 2rem; padding-left: 1rem;"></a>
+<a href="../../articles/delete/{{ article.preview_hash }}" class="glyphicon glyphicon-trash confirm-delete" style="font-size: 2rem; padding-left: 5rem; color: #dd0000;"></a>
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
