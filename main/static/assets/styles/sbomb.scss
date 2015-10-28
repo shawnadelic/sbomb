@@ -95,7 +95,10 @@ $column-map: (
 // Custom styles
 
 body {
-  font-size: $body-font-size;
+  font-size: 1rem;
+  @media (min-width: $tablet-width){
+    font-size: 1.1rem;
+  }
   color: $dark-grey;
   font-family: $body-font;
   background: $body-background;
