@@ -119,6 +119,7 @@ a:hover{
 
 .content {
   padding: 0.001rem 0.8rem 0.8rem;
+  padding-top: 1rem;
 }
 
 
@@ -172,6 +173,7 @@ a:hover{
   padding: 0.5rem 1rem;
 
   .title{
+    font-size: $base-font-size*1.2;
     font-family: $base-header-font;
     display: block;
     @media (min-width: $tablet-width) {
@@ -193,7 +195,7 @@ a:hover{
   .info {
     text-transform: uppercase;
     display: block;
-    font-size: $base-font-size*0.9;
+    font-size: $base-font-size*0.8;
     @media (min-width: $tablet-width) {
       font-size: $base-font-size*0.8;
     }
@@ -284,6 +286,7 @@ button{
 
 // Form Table Styles
 form table {
+  color: $beige;
   width: 100%;
   background: $body-background;
   padding: $base-padding/2 $base-padding/2;
@@ -309,6 +312,9 @@ form table {
   }
   textarea {
     width: 75%
+  }
+  a:hover {
+    color: $beige;
   }
 }
 
