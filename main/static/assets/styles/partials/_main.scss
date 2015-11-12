@@ -321,3 +321,48 @@ form table {
 .profile-photo {
   @include clearfix();
 }
+
+// Article images
+
+.main img[style*="left"]
+  {
+    margin-right: 1rem;
+  }
+.main img[style*="right"]
+  {
+    margin-left: 1rem;
+  }
+
+// Blockquotes
+blockquote {
+  quotes: "\201C""\201D""\2018""\2019";
+  padding: 1rem;
+  margin-top: 0;
+  background: #222 url("../images/dark-grey-bg.png");
+  color: #eee;
+  margin-bottom: 1.5em;
+  display: block;
+  margin-right: 0;
+  font-style: italic;
+  font-size: 1rem;
+  margin-left: 0;
+  @media (min-width: $tablet-width) {
+    width: 50%;
+    float: right;
+    margin-left: 1rem;
+
+    @include light-box-shadow();
+  }
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
