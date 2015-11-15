@@ -27,7 +27,8 @@ def article(request, slug):
     return render(request, 'articles/article.html',
     {
         'article': article,
-        'recent_articles': recent_articles
+        'recent_articles': recent_articles,
+        #'profile_id': article.author.profile_id.id
     })
 
     def get_absolute_url(self):
