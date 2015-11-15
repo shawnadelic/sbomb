@@ -3,7 +3,7 @@ from base64 import urlsafe_b64encode as url_encode
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Article(models.Model):
     DRAFT, SUBMITTED, PUBLISHED = range(3)
@@ -14,7 +14,7 @@ class Article(models.Model):
     )
     title = models.CharField(max_length=100)
     slug = models.SlugField(blank=True, null=True, unique=True)
-    body = RichTextField(blank=True, null=True)
+    body = RichTextUploadingField(blank=True, null=True)
     pub_date = models.DateTimeField("Publish date", db_index=True, editable=True, default=datetime.datetime.now)
     author = models.ForeignKey(User, related_name='article_author', null=True, blank=True)
     editor = models.ForeignKey(User, related_name='article_editor', null=True, blank=True)
