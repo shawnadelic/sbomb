@@ -95,6 +95,7 @@ $column-map: (
 // Custom styles
 
 body {
+  webkit-text-stroke: 0px!important;-webkit-font-smoothing: antialiased !important;
   font-size: 1rem;
   @media (min-width: $tablet-width){
     font-size: 1.1rem;
