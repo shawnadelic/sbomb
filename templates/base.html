@@ -4,9 +4,11 @@
   <head>
     <title>{% block title %}Sugarbomb DIY{% endblock %}</title>
     <meta charset="utf-8">
-    <meta name="description" content="A website for music">
-    <meta name="author" content ="">
+    <meta name="author" content ="Sugarbomb DIY">
     <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta property="og:site_name" content="Sugarbomb DIY"/>
+    <meta property="article:publisher" content="https://www.sugarbombdiy.com" />
+    <meta name="description" property="og:description" content="An independent publication established to support local arts, music, and DIY culture.">
     {% block extra_meta_tags %}{% endblock %}
 
     <link href='{% static 'assets/styles/sbomb.css' %}' rel='stylesheet' type='text/css'>
@@ -28,19 +30,19 @@
             <div>
               <li><a href="{% url 'articles:all_articles' %}">Articles</a>
                 <ul>
-                  <li><a href="{% url 'articles:category' 'album-reviews' %}">Album Reviews</a></li>
-                  <li><a href="{% url 'articles:category' 'featured-artists' %}">Featured Artists</a></li>
+                  <li><a href="{% url 'articles:category' 'art' %}">Art</a></li>
+                  <li><a href="{% url 'articles:category' 'music' %}">Music</a></li>
                 </ul>
               </li>
             </div>
             <div>
-              <li><a href="{% url 'bands:index' %}">Bands</a></li>
-            </div>
-            <div>
-              <li><a href="{% url 'feedback:submit' %}">Feedback</a></li>
+              <li><a href="{% url 'contribute:index' %}">Contribute!</a></li>
             </div>
             <div>
               <li><a href="{% url 'about_us' %}">About Us</a></li>
+            </div>
+            <div>
+              <li><a href="{% url 'contact:contact_us' %}">Contact Us</a></li>
             </div>
           </ul>
         </nav>
@@ -50,6 +52,7 @@
     <div class="footer container row">
       <div class="six-cell column">
         <div><a href="{% url 'about_us' %}">About Us</a></div>
+        <div><a href="{% url 'contact:contact_us' %}">Contact Us</a></div>
         <div><a href="{% url 'contribute:login' %}">Contributor Login</a></div>
       </div>
       <div class="six-cell column social-media">
