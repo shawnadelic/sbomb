@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name='profile_id')
     bio = RichTextField(blank=True)
     website = models.URLField(blank=True)
     photo = models.ImageField(blank=True)
