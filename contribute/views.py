@@ -145,7 +145,7 @@ def articles_edit(request, article_id):
                 form = ArticleForm(instance=article)
         else:
             form = ArticleForm(post)
-    return render(request, 'contribute/articles_edit.html', {'form': form})
+    return render(request, 'contribute/articles_edit.html', {'form': form, 'article': article})
 
 
 
