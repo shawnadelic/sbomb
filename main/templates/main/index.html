@@ -5,7 +5,7 @@
   {% if featured_articles %}
   <ul class="bx-slider" style="visibility:hidden;">
   {% for article in featured_articles %}
-    {% thumbnail article.image "1800x500" crop="center" as image %}
+    {% thumbnail article.image "1800x700" crop="center" as image %}
     <li><a href='{{ article.get_absolute_url }}'><img src='{{ image.url }}' title='{{ article.title }}'></a></li>
     {% endthumbnail %}
   {% endfor %}
