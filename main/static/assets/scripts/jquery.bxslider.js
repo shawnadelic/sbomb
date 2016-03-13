@@ -697,9 +697,10 @@
 			slider.children.each(function(index){
 				// get the image title attribute
 				var title = $(this).find('img:first').attr('title');
+                                var link = $(this).find('img:first').parent().attr('href');
 				// append the caption
 				if (title != undefined && ('' + title).length) {
-                    $(this).append('<div class="caption"><span class="title header">' + title + '</span></div>');
+                    $(this).append('<a href="' + link + '">' + '<div class="caption"><span class="title header">' + title + '</span></div></a>');
                 }
 			});
 		}
