@@ -195,7 +195,7 @@ a:hover{
   .info {
     text-transform: uppercase;
     display: block;
-    font-size: $base-font-size*0.8;
+    font-size: $base-font-size*0.7;
     @media (min-width: $tablet-width) {
       font-size: $base-font-size*0.8;
     }
@@ -326,11 +326,12 @@ form table {
 .article-body
 {
   img
-    {
-      max-width: 100%;
-      height: auto;
-    }
-   img, figure {
+  {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #bbb;
+  }
+  img, figure {
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -349,16 +350,12 @@ form table {
   figure > img {
     margin-bottom: 0;
   }
-  img[style*="left"]
+  img[style*="left"], figure[style*="left"]
     {
+      margin-left: 0;
       margin-right: 1rem;
     }
-  img[style*="right"]
-    {
-      margin-left: 1rem;
-      margin-right: 0;
-    }
-  figure[style*="right"]
+  img[style*="right"], figure[style*="right"]
     {
       margin-left: 1rem;
       margin-right: 0;
