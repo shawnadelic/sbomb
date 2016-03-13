@@ -4,11 +4,10 @@
   <head>
     <title>{% block title %}Sugarbomb DIY{% endblock %}</title>
     <meta charset="utf-8">
-    <meta name="author" content ="Sugarbomb DIY">
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <meta property="og:site_name" content="Sugarbomb DIY"/>
-    <meta property="article:publisher" content="https://www.sugarbombdiy.com" />
-    <meta name="description" property="og:description" content="An independent publication established to support local arts, music, and DIY culture.">
+    <meta property="og:site_name" content="Sugarbomb DIY">
+    <meta property="article:publisher" content="https://www.sugarbombdiy.com">
+    <meta name="description" property="og:description" content="{% block page_description %}An independent publication established to support local arts, music, and DIY culture.{% endblock %}">
     {% block extra_meta_tags %}{% endblock %}
 
     <link href='{% static 'assets/styles/sbomb.css' %}' rel='stylesheet' type='text/css'>
@@ -75,6 +74,51 @@
           }
           );
       });
+      (function(){
+        var iframes = window.top.document.querySelectorAll('.article-body .force-responsive, .article-body iframe[src^="//www.youtube.com"]');
+        if(iframes.length){
+        var articleBody = window.top.document.querySelectorAll('.article-body > .column')[0];
+          for(var i=0; i < iframes.length; i++){
+            var divWrapper = document.createElement('div'),
+              placeHolder = document.createElement('img'),
+              iframe = iframes[i],
+              iframeParent = iframe.parentNode,
+              heightRatio = iframe.height / iframe.width;
+            divWrapper.style.position = 'relative';
+            divWrapper.style.maxWidth = iframe.width + 'px';
+            divWrapper.dataset.maxWidth = iframe.width;
+            divWrapper.style.maxHeight = iframe.height + 'px';
+            divWrapper.dataset.maxHeight = iframe.height;
+            divWrapper.dataset.heightRatio = heightRatio;
+            var divWidth = Math.min(iframe.width, articleBody.offsetWidth);
+            divWrapper.style.width = '100%';
+            divWrapper.style.height = Math.floor(divWidth * heightRatio) + 'px';
+            divWrapper.style.marginLeft = 'auto';
+            divWrapper.style.marginRight = 'auto';
+            iframe.removeAttribute('height');
+            iframe.removeAttribute('width');
+            iframe.style.position = 'absolute';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframeParent.appendChild(divWrapper);
+            divWrapper.appendChild(iframe);
+          }
+          window.onresize = function(){
+            var bodyWidth = articleBody.width - articleBody.style.paddingLeft - articleBody.style.paddingRight;
+            for(var i=0;i<iframes.length;i++){
+              var divNode = iframes[i].parentNode,
+                  divParent = divNode.parentNode;
+              var divWidth = Math.min(bodyWidth, divNode.dataset.maxWidth);
+              divNode.style.width = divWidth + 'px';
+              divNode.style.height = Math.floor(divNode.dataset.heightRatio * divWidth) + 'px';
+            }
+          }
+        }
+
+      })();
+
     </script>
   </body>
 </html>

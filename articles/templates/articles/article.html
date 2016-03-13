@@ -2,13 +2,18 @@
 {% load thumbnail %}
 {% load staticfiles %}
 
+
+{% block page_description %}{{ article.body|striptags|slice:"400"}}...{% endblock %}
+
 {% block extra_meta_tags %}
+  <meta property="og:type" content="article">
+  <meta name="author" content="{{ article.author.first_name }}{% if article.author.last_name %} {{ article.author.last_name }}{% endif %}">
 {% thumbnail article.image "1000x500" crop="center" as photo %}
   <meta property="og:image"
-  content="{{ photo.url }}" />
+  content="http://www.sugarbombdiy.com{{ photo.url }}" type="image/jpeg">
 {% endthumbnail %}
-<meta property="og:title"
-content="{{ article.title }}" />
+  <meta property="og:title"
+content="{{ article.title }}">
 {% endblock %}
 
 {% block title %}
