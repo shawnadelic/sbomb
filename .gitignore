@@ -1,6 +1,7 @@
 sbomb/settings.py
 static/*
 media/*
+venv/*
 *.pyc
 *.sqlite3
 *.css
