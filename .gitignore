@@ -8,3 +8,4 @@ venv/*
 *.cssc
 *.scssc
 *.swp
+sbomb.ini
