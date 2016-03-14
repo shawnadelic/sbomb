@@ -1,4 +1,3 @@
-sbomb/settings.py
 static/*
 media/*
 venv/*
