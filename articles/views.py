@@ -20,7 +20,6 @@ class AllArticlesView(generic.ListView):
 
 def article(request, slug):
     article = get_object_or_404(Article, slug=slug)
-    print "No"
     if article.status != Article.PUBLISHED and not request.user.groups.filter(name='Editor').exists():
         raise Http404()
     recent_articles = Article.objects.filter(status=Article.PUBLISHED).order_by('-pub_date').exclude(id=article.id)[:6]
